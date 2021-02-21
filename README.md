@@ -1,3 +1,3 @@
 **Coding Practice**
-_Inspired by Nick Mahlangu_
 
+_Inspired by Nick Mahlangu_

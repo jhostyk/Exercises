@@ -140,8 +140,8 @@ class ReservoirSamplingSolution:
 if __name__ == '__main__':
 
 	array = [i for i in range(3)]
-
 	head = makeLinkedList(array)
+
 	obj = OriginalSolution(head)
 	randomNodeValue = obj.getRandom()
 	print ("Original:", randomNodeValue)

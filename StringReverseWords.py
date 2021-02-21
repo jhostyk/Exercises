@@ -27,6 +27,7 @@ def reverseAstringForTime(string):
 def reverseAstringForSpace(string):
 	"""
 	Optimize for space.
+	Given a mutable string, only ever use that array / some random variables.
 	Args:
 		string (str): the string to reverse.
 	Returns:
@@ -47,8 +48,8 @@ def reverseAstringForSpace(string):
 	wordStart = 0
 	wordEnd = length
 	### Step through until we get to a space / new word:
-	for i in range(length):
-		if string[i] == " ":
+	for i in range(length + 1): # We go to + 1 so that we can check if we're at the end of the string.
+		if i == length or string[i] == " ":
 			wordEnd = i - 1
 			### Reverse that word:
 			halfWordLength = int((wordEnd - wordStart + 1)/2)
@@ -61,17 +62,27 @@ def reverseAstringForSpace(string):
 	return "".join(string)
 
 
+def nickMahlanguAnswer(string):
+	'''
+	Optimize for time and minimal code.
+	Same method as reverseAstringForSpace above, where we reverse the full string and then reverse individual words.
+	'''
+	return " ".join([word[::-1] for word in string[::-1].split()])
+
+
+
 
 if __name__ == '__main__':
 
 
-	string = "I am five short words"
+	string = "Here are five short words"
 
-	assert (reverseAstringForTime(string) == "words short five am I")
-	assert (reverseAstringForSpace(string) == "words short five am I")
+	assert (reverseAstringForTime(string) == "words short five are Here")
 
-	### Issue:
-	# reverseAstringForSpace doesn't flip the first word.
+	assert (reverseAstringForSpace(string) == "words short five are Here")
+	
+	assert (nickMahlanguAnswer(string) == "words short five are Here")
+
 
 
 
